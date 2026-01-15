@@ -4,6 +4,7 @@ import jax.numpy as jnp
 
 from .hamiltonians import build_H_2d_wilson_kx
 
+
 def spectrum_2d_wilson(m_y, Ny, Nkx=201, r=1.0):
     kxs = jnp.linspace(-jnp.pi, jnp.pi, Nkx)
 
@@ -14,6 +15,7 @@ def spectrum_2d_wilson(m_y, Ny, Nkx=201, r=1.0):
 
     E = jax.vmap(evals_at_kx)(kxs)
     return kxs, E
+
 
 def spectral_flow_2d_wilson(m_y, Ny, Nkx=101, n_modes=4, r=1.0):
     kxs = jnp.linspace(-jnp.pi, jnp.pi, Nkx)
