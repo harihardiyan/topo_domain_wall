@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "topo_dw"
+version = "0.1.0"
+description = "Topological Domain-Wall Fermions Framework (JAX)"
+authors = [
+    { name = "Hari Hardiyan", email = "your-email@example.com" }
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "jax",
+    "jaxlib",
+    "matplotlib",
+]
+
+[project.urls]
+Homepage = "https://github.com/harihardiyan/topo_domain_wall"
+Documentation = "https://github.com/harihardiyan/topo_domain_wall/blob/main/API.md"
