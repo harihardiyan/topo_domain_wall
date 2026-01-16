@@ -3,7 +3,8 @@ import jax.numpy as jnp
 from .hamiltonians import build_H_2d_wilson_kx
 
 
-# ADA 2 BARIS KOSONG DI ATAS
+# BLANK LINE 1
+# BLANK LINE 2
 def spectrum_2d_wilson(m_y, Ny, Nkx=201, r=1.0):
     kxs = jnp.linspace(-jnp.pi, jnp.pi, Nkx)
 
@@ -16,7 +17,8 @@ def spectrum_2d_wilson(m_y, Ny, Nkx=201, r=1.0):
     return kxs, E
 
 
-# ADA 2 BARIS KOSONG DI ATAS
+# BLANK LINE 1
+# BLANK LINE 2
 def spectral_flow_2d_wilson(m_y, Ny, Nkx=101, n_modes=4, r=1.0):
     kxs = jnp.linspace(-jnp.pi, jnp.pi, Nkx)
 
