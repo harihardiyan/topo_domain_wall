@@ -1,7 +1,6 @@
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import jax.numpy as jnp
 
 
 def plot_spectrum_png(kxs, E, filename, title):
