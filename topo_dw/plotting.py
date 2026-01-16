@@ -16,7 +16,7 @@ def plot_spectrum_png(kxs, E, filename, title):
     plt.close()
 
 
-def plot_interface_modes_png(ys, Es, Dens, filename, title):
+def plot_interface_modes_png(ys, Dens, Es, title, filename):
     plt.figure(figsize=(8, 5))
     for i in range(len(Es)):
         plt.plot(ys, Dens[i], label=f"Mode {i}, E={Es[i]:.3f}")
@@ -30,7 +30,7 @@ def plot_interface_modes_png(ys, Es, Dens, filename, title):
     plt.close()
 
 
-def plot_spectral_flow_png(kxs, E_flow, filename, title):
+def plot_spectral_flow_png(kxs, E_flow, title, filename):
     plt.figure(figsize=(8, 5))
     for i in range(E_flow.shape[1]):
         plt.plot(kxs, E_flow[:, i], label=f"Mode {i}")
