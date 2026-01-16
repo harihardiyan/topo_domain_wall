@@ -1,6 +1,7 @@
 import jax.numpy as jnp
 from .hamiltonians import build_H_2d_wilson_kx
 
+
 def interface_modes_2d(m_y, Ny, kx_target=0.0, n_modes=4, r=1.0):
     Hkx = build_H_2d_wilson_kx(kx_target, Ny, m_y, r=r)
     evals, evecs = jnp.linalg.eigh(Hkx)
