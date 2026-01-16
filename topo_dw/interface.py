@@ -2,6 +2,7 @@ import jax.numpy as jnp
 from .hamiltonians import build_H_2d_wilson_kx
 
 
+# ADA 2 BARIS KOSONG DI ATAS
 def interface_modes_2d(m_y, Ny, kx_target=0.0, n_modes=4, r=1.0):
     Hkx = build_H_2d_wilson_kx(kx_target, Ny, m_y, r=r)
     evals, evecs = jnp.linalg.eigh(Hkx)
@@ -14,6 +15,7 @@ def interface_modes_2d(m_y, Ny, kx_target=0.0, n_modes=4, r=1.0):
         idx = int(idx_sorted[n])
         e = evals[idx]
         v = evecs[:, idx]
+
         dens = []
         for j in range(Ny):
             i0 = 2 * j
@@ -23,7 +25,11 @@ def interface_modes_2d(m_y, Ny, kx_target=0.0, n_modes=4, r=1.0):
             dens.append(dens_j)
         dens = jnp.array(dens)
         dens = dens / jnp.sum(dens)
+
         Es.append(e)
         Dens_list.append(dens)
 
-    return jnp.arange(Ny), jnp.array(Es), jnp.stack(Dens_list, axis=0)
+    Es = jnp.array(Es)
+    Dens = jnp.stack(Dens_list, axis=0)
+    ys = jnp.arange(Ny)
+    return ys, Es, Dens
