@@ -65,25 +65,6 @@ Implemented in a **strip geometry** (periodic in $x$, open in $y$), utilizing Wi
 
 ---
 
-## 📁 Repository Structure
-
-```text
-topo_domain_wall/
-├── topo_dw/
-│   ├── __init__.py          # Core package initialization
-│   ├── mass_profiles.py     # Functional mass distributions (Step, Kink, Tanh)
-│   ├── hamiltonians.py      # Core operator construction (JIT-compatible)
-│   ├── spectrum.py          # Parallelized spectral solvers
-│   ├── interface.py         # Boundary mode and localization analysis
-│   └── plotting.py          # Publication-quality visualization tools
-├── run_demo_2d_wilson.py    # Primary orchestration script
-├── README.md                # Project documentation
-├── API.md                   # Functional API reference
-└── LICENSE                  # MIT License
-```
-
----
-
 ## 🚀 Usage
 
 ### 🔧 Installation
