@@ -1,6 +1,7 @@
 import jax.numpy as jnp
 
 
+
 def mass_step_profile_y(Ny, m_top, m_bottom):
     m_y = []
     for j in range(Ny):
@@ -9,6 +10,7 @@ def mass_step_profile_y(Ny, m_top, m_bottom):
         else:
             m_y.append(m_bottom)
     return jnp.array(m_y, dtype=jnp.float64)
+
 
 
 def mass_kink_profile_y(Ny, m0=1.0, width=5.0):
