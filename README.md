@@ -5,6 +5,7 @@
 [![Python: 3.9+](https://img.shields.io/badge/python-3.9+-green.svg)](https://www.python.org/downloads/)
 [![Framework: JAX](https://img.shields.io/badge/Framework-JAX-orange.svg)](https://github.com/google/jax)
 [![Field: Computational Physics](https://img.shields.io/badge/Field-Condensed--Matter-blue)](#)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/harihardiyan/topo_domain_wall/blob/main/notebooks/TDWF_demo.ipynb)
 
 ## 📦 Overview
 
