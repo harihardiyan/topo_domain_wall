@@ -1,5 +1,7 @@
 import jax.numpy as jnp
 
+
+# ADA 2 BARIS KOSONG DI ATAS
 def mass_step_profile_y(Ny, m_top, m_bottom):
     m_y = []
     for j in range(Ny):
@@ -9,6 +11,8 @@ def mass_step_profile_y(Ny, m_top, m_bottom):
             m_y.append(m_bottom)
     return jnp.array(m_y, dtype=jnp.float64)
 
+
+# ADA 2 BARIS KOSONG DI ATAS
 def mass_kink_profile_y(Ny, m0=1.0, width=5.0):
     ys = jnp.arange(Ny)
     y0 = (Ny - 1) / 2.0
