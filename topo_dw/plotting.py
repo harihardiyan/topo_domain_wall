@@ -1,38 +1,44 @@
-import matplotlib
+    import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import jax.numpy as jnp
 
-def plot_spectrum_png(kxs, E, filename, title="Spectrum"):
-    plt.figure(figsize=(6,4))
-    for n in range(E.shape[1]):
-        plt.plot(kxs, E[:, n], 'k-', lw=0.4)
-    plt.axhline(0, color='r', lw=0.8)
-    plt.title(title)
+
+def plot_spectrum_png(kxs, E, filename, title):
+    plt.figure(figsize=(8, 5))
+    plt.plot(kxs, E, color="black", linewidth=0.5)
     plt.xlabel("kx")
     plt.ylabel("Energy")
+    plt.title(title)
+    plt.grid(True)
     plt.tight_layout()
-    plt.savefig(filename, dpi=150)
+    plt.savefig(filename)
     plt.close()
 
-def plot_interface_modes_png(ys, Es, Dens, filename, title="Interface modes"):
-    plt.figure(figsize=(6,4))
-    for i in range(Dens.shape[0]):
-        plt.plot(ys, Dens[i], label=f"mode {i}, E={Es[i]:.3f}")
-    plt.title(title)
+
+def plot_interface_modes_png(ys, Es, Dens, filename, title):
+    plt.figure(figsize=(8, 5))
+    for i in range(len(Es)):
+        plt.plot(ys, Dens[i], label=f"Mode {i}, E={Es[i]:.3f}")
     plt.xlabel("y")
     plt.ylabel("Density")
+    plt.title(title)
     plt.legend()
+    plt.grid(True)
     plt.tight_layout()
-    plt.savefig(filename, dpi=150)
+    plt.savefig(filename)
     plt.close()
 
-def plot_spectral_flow_png(kxs, E_flow, filename, title="Spectral flow"):
-    plt.figure(figsize=(6,4))
+
+def plot_spectral_flow_png(kxs, E_flow, filename, title):
+    plt.figure(figsize=(8, 5))
     for i in range(E_flow.shape[1]):
-        plt.plot(kxs, E_flow[:, i], lw=1.2)
-    plt.title(title)
+        plt.plot(kxs, E_flow[:, i], label=f"Mode {i}")
     plt.xlabel("kx")
     plt.ylabel("Energy")
+    plt.title(title)
+    plt.legend()
+    plt.grid(True)
     plt.tight_layout()
-    plt.savefig(filename, dpi=150)
+    plt.savefig(filename)
     plt.close()
