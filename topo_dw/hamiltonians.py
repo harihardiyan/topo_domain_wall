@@ -24,7 +24,6 @@ def build_H_2d_wilson_kx(kx, Ny, m_y, r=1.0):
             H = H.at[idx + 2, idx + 1].set(1j / 2)
             H = H.at[idx + 3, idx].set(1j / 2)
 
-    # Periodic x-direction hopping
     for y in range(dim):
         idx = 2 * y
         H = H.at[idx, idx + 1].set(jnp.sin(kx))
