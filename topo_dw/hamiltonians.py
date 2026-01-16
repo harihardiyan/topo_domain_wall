@@ -1,32 +1,36 @@
-import jax
-jax.config.update("jax_enable_x64", True)
 import jax.numpy as jnp
-
+from .linalg import gamma_x, gamma_y, gamma_0
 
 def build_H_2d_wilson_kx(kx, Ny, m_y, r=1.0):
-    dim = Ny
-    H = jnp.zeros((2 * dim, 2 * dim), dtype=jnp.complex128)
+    dim = 2 * Ny
+    H = jnp.zeros((dim, dim), dtype=jnp.complex128)
 
-    for y in range(dim):
-        m = m_y[y]
-        idx = 2 * y
-        H = H.at[idx, idx].set(m + r * 2)
-        H = H.at[idx + 1, idx + 1].set(-m - r * 2)
+    sin_kx = jnp.sin(kx)
+    cos_kx = jnp.cos(kx)
+    W_x = r * (1.0 - cos_kx)
 
-        if y < dim - 1:
-            H = H.at[idx, idx + 2].set(-r)
-            H = H.at[idx + 1, idx + 3].set(-r)
-            H = H.at[idx + 2, idx].set(-r)
-            H = H.at[idx + 3, idx + 1].set(-r)
+    Hx_dirac = sin_kx * gamma_x
+    Hx_wilson = W_x * gamma_0
 
-            H = H.at[idx, idx + 3].set(-1j / 2)
-            H = H.at[idx + 1, idx + 2].set(-1j / 2)
-            H = H.at[idx + 2, idx + 1].set(1j / 2)
-            H = H.at[idx + 3, idx].set(1j / 2)
+    Hy_forward_dirac  = -0.5j * gamma_y
+    Hy_backward_dirac =  0.5j * gamma_y
+    Hy_forward_wilson  = -0.5 * r * gamma_0
+    Hy_backward_wilson = -0.5 * r * gamma_0
+    Hy_onsite_wilson   = r * gamma_0
 
-    for y in range(dim):
-        idx = 2 * y
-        H = H.at[idx, idx + 1].set(jnp.sin(kx))
-        H = H.at[idx + 1, idx].set(jnp.sin(kx))
+    for j in range(Ny):
+        i0 = 2 * j
+        i1 = i0 + 2
+        m_loc = m_y[j]
+        onsite = m_loc * gamma_0 + Hx_dirac + Hx_wilson + Hy_onsite_wilson
+        H = H.at[i0:i1, i0:i1].set(H[i0:i1, i0:i1] + onsite)
+
+    for j in range(Ny - 1):
+        i0 = 2 * j
+        i1 = i0 + 2
+        k0 = 2 * (j + 1)
+        k1 = k0 + 2
+        H = H.at[k0:k1, i0:i1].set(H[k0:k1, i0:i1] + Hy_forward_dirac + Hy_forward_wilson)
+        H = H.at[i0:i1, k0:k1].set(H[i0:i1, k0:k1] + Hy_backward_dirac + Hy_backward_wilson)
 
     return H
