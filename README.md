@@ -114,5 +114,5 @@ If this framework facilitates your research or educational projects, please cite
 ## 👤 Author
 
 **Hari Hardiyan**  
-*AI Orchestration & Computational Physics ft. Microsoft Copilot*  
-Specializing in hardware-accelerated topological research and automated numerical auditing.
+*AI Orchestration  ft. Microsoft Copilot*  
+“This repository is an AI-assisted code artifact generated via prompt orchestration. The author does not claim domain expertise.”
